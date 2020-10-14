@@ -1,13 +1,9 @@
-
-
-// ignore: must_be_immutable
-import 'package:custom_drawer/CustomDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
 
 SecondLayerState secondLayerState;
-class SecondLayer extends StatefulWidget {
 
+class SecondLayer extends StatefulWidget {
   @override
   SecondLayerState createState() => SecondLayerState();
 
@@ -17,10 +13,9 @@ class SecondLayer extends StatefulWidget {
 class SecondLayerState extends State<SecondLayer> {
   double xoffSet = 0;
   double yoffSet = 0;
-  bool isOpen = false;
-  var height = 30;
-  var width = 30;
   double angle = 0;
+
+  bool isOpen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +35,5 @@ class SecondLayerState extends State<SecondLayer> {
             )
           ],
         ));
-  }
-
-  void openTab() {
-    setState(() {
-      xoffSet = 122;
-      yoffSet = 110;
-      angle = -0.275;
-      isOpen = true;
-    });
-  }
-
-  void closeTab() {
-    setState(() {
-      xoffSet = 0;
-      yoffSet = 0;
-      angle = 0;
-      isOpen = false;
-    });
   }
 }

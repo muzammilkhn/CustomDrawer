@@ -8,22 +8,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  AnimationController _animationController;
-
   double xoffSet = 0;
   double yoffSet = 0;
-  var height = 30;
-  var width = 30;
   double angle = 0;
 
   bool isOpen = false;
   bool isPlaying = false;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +32,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ? BorderRadius.circular(10)
                     : BorderRadius.circular(0)),
             child: SafeArea(
-                          child: Stack(
+              child: Stack(
                 children: [
                   !isOpen
                       ? IconButton(
-                          icon:
-                              // AnimatedIcon(
-                              //   icon: AnimatedIcons.close_menu,
-                              //   color: Colors.blue[700],
-                              //   progress: _animationController,
-                              // ),
-                              Icon(Icons.menu,color: Color(0xFF1f186f),),
+                          icon: Icon(
+                            Icons.menu,
+                            color: Color(0xFF1f186f),
+                          ),
                           onPressed: () {
-                            xoffSet = 150;
-                            yoffSet = 80;
-                            angle = -0.2;
-                            isOpen = true;
-                            setState(() {});
+                            setState(() {
+                              xoffSet = 150;
+                              yoffSet = 80;
+                              angle = -0.2;
+                              isOpen = true;
+                            });
 
                             secondLayerState.setState(() {
                               secondLayerState.xoffSet = 122;
@@ -67,14 +55,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             });
                           })
                       : IconButton(
-                          icon: Icon(Icons.arrow_back_ios,color: Color(0xFF1f186f)),
+                          icon: Icon(Icons.arrow_back_ios,
+                              color: Color(0xFF1f186f)),
                           onPressed: () {
                             if (isOpen == true) {
-                              xoffSet = 0;
-                              yoffSet = 0;
-                              angle = 0;
-                              isOpen = false;
-                              setState(() {});
+                              setState(() {
+                                xoffSet = 0;
+                                yoffSet = 0;
+                                angle = 0;
+                                isOpen = false;
+                              });
 
                               secondLayerState.setState(() {
                                 secondLayerState.xoffSet = 0;
@@ -92,45 +82,5 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
             )));
-  }
-
-  // void _handleOnPressed() {
-  //   isPlaying = !isPlaying;
-  //   isPlaying ? _animationController.forward() : _animationController.reverse();
-  //   abcd();
-  // }
-
-  abcd() {
-    print(isOpen);
-    print(xoffSet);
-    print(yoffSet);
-    print(angle);
-
-    if (isOpen == true) {
-      xoffSet = 0;
-      yoffSet = 0;
-      angle = 0;
-      isOpen = false;
-      setState(() {});
-
-      secondLayerState.setState(() {
-        secondLayerState.xoffSet = 0;
-        secondLayerState.yoffSet = 0;
-        secondLayerState.angle = 0;
-      });
-    }
-    if (isOpen == false) {
-      xoffSet = 150;
-      yoffSet = 80;
-      angle = -0.2;
-      isOpen = true;
-      setState(() {});
-
-      secondLayerState.setState(() {
-        secondLayerState.xoffSet = 122;
-        secondLayerState.yoffSet = 110;
-        secondLayerState.angle = -0.275;
-      });
-    }
   }
 }

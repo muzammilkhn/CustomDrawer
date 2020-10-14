@@ -10,11 +10,10 @@ class CustomDrawerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
+      theme: ThemeData(
           textTheme: GoogleFonts.solwayTextTheme(
-          
-            Theme.of(context).textTheme,
-          )),
+        Theme.of(context).textTheme,
+      )),
       home: CustomDrawer(),
     );
   }
